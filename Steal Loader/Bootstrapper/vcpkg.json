@@ -1,0 +1,7 @@
+{
+  "dependencies": [
+    "fmt",
+    "gumbo",
+    "curl"
+  ]
+}

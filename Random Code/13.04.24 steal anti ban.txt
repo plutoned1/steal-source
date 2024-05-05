@@ -1,0 +1,37 @@
+   public static void AntiBan()
+   {
+       isStumpChecking = false;
+       MenuPatch.isRunningAntiBan = false;
+       Debug.Log("Running...");
+       PlayFabClientAPI.ExecuteCloudScript(new ExecuteCloudScriptRequest
+       {
+           FunctionName = "RoomClosed",
+           FunctionParameter = new
+           {
+               GameId = PhotonNetwork.CurrentRoom.Name,
+               Region = Regex.Replace(PhotonNetwork.CloudRegion, "[^a-zA-Z0-9]", "").ToUpper(),
+               UserId = PhotonNetwork.LocalPlayer.UserId,
+               ActorNr = PhotonNetwork.LocalPlayer,
+               ActorCount = PhotonNetwork.ViewCount,
+               AppVersion = PhotonNetwork.AppVersion
+           }
+       },
+       delegate (ExecuteCloudScriptResult result)
+       {
+           Debug.Log(result.FunctionName + " Has Been Executed!");
+       }, null, null, null);
+       string gamemode = PhotonNetwork.CurrentRoom.CustomProperties["gameMode"].ToString().Replace(GorillaComputer.instance.currentQueue, GorillaComputer.instance.currentQueue + "MODDED_MODDED_").Replace(GetGameMode(), GetGameMode() + GetGameMode());
+       Hashtable hash = new Hashtable
+       {
+           { "gameMode",gamemode }
+       };
+       PhotonNetwork.CurrentRoom.SetCustomProperties(hash);
+
+       Notif.ClearAllNotifications();
+       Notif.SendNotification("Antiban and Set Master Enabled!", Color.white);
+
+       PhotonNetwork.SetMasterClient(PhotonNetwork.LocalPlayer);
+
+       MenuPatch.isRunningAntiBan = false;
+       antibancooldown = Time.time + 10;
+   }

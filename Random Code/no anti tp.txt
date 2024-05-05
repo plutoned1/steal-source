@@ -1,0 +1,8 @@
+[HarmonyPatch(typeof(GorillaLocomotion.Player), "AntiTeleportTechnology", MethodType.Normal)]
+        public class NoAntiTP : MonoBehaviour
+        {
+            static bool Prefix()
+            {
+                return false;
+            }
+        }

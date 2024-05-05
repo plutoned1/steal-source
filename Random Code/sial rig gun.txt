@@ -1,0 +1,21 @@
+public static void RigGun()
+        {
+            var data = GunLib.Shoot();
+            if (data != null)
+            {
+                if (data.isShooting && data.isTriggered)
+                {
+                    if (GorillaTagger.Instance.offlineVRRig.enabled)
+                    {
+                        Steal.Patchers.VRRigPatchers.OnDisable.Prefix(GorillaTagger.Instance.offlineVRRig);
+                    }
+
+                    GorillaTagger.Instance.offlineVRRig.enabled = false;
+                    GorillaTagger.Instance.offlineVRRig.transform.position = data.hitPosition + new Vector3(0, 0.6f, 0);
+                }
+                else
+                {
+                    ResetRig();
+                }
+            }
+        }

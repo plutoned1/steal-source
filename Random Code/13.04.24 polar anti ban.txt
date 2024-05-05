@@ -1,0 +1,24 @@
+string gamemode = PhotonNetwork.CurrentRoom.CustomProperties["gameMode"].ToString().Replace(GorillaComputer.instance.currentQueue, GorillaComputer.instance.currentQueue + "MODDEDMODDED");
+ExitGames.Client.Photon.Hashtable gamehash = new ExitGames.Client.Photon.Hashtable
+{
+{ "gameMode", gamemode }
+};
+PhotonNetwork.SetMasterClient(PhotonNetwork.LocalPlayer);
+PhotonNetwork.CurrentRoom.IsOpen = false;
+PhotonNetwork.CurrentRoom.IsVisible = false;
+PhotonNetwork.CurrentRoom.SetCustomProperties(gamehash, null, null);
+NotifiLib.SendNotification("<color=purple>Antiban Executed!</color>");
+
+PlayFabClientAPI.ExecuteCloudScript(new ExecuteCloudScriptRequest { FunctionName = "RoomClosed", FunctionParameter = new
+{
+    GameId = PhotonNetwork.CurrentRoom.Name,
+    Region = Regex.Replace(PhotonNetwork.CloudRegion, "[^a-zA-Z0-9]", "").ToUpper(),
+    UserId = PhotonNetwork.LocalPlayer.UserId,
+    ActorNr = PhotonNetwork.LocalPlayer,
+    ActorCount = PhotonNetwork.ViewCount,
+    AppVersion = PhotonNetwork.AppVersion
+} },
+delegate (ExecuteCloudScriptResult result)
+{
+    Debug.Log(result.FunctionName + " Has Been Executed!");
+}, null, null, null);

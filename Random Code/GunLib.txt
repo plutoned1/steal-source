@@ -1,0 +1,387 @@
+using System;
+using System.Collections.Generic;
+using System.Text;
+using UnityEngine;
+using UnityEngine.XR;
+using Object = UnityEngine.Object;
+using static Steal.Background.InputHandler;
+using BepInEx;
+using GorillaLocomotion;
+
+namespace Steal.Background
+{
+    internal class GunLib
+    {
+        public class GunLibData
+        {
+            public VRRig lockedPlayer { get; set; }
+
+            public bool isShooting { get; set; }
+
+            public bool isLocked { get; set; }
+
+            public Vector3 hitPosition { get; set; }
+
+            public bool isTriggered { get; set; }
+
+            public GunLibData(bool stateTriggered, bool triggy, bool foundPlayer, VRRig player = null, Vector3 hitpos = new Vector3()) 
+            { 
+                lockedPlayer = player;
+                isShooting = stateTriggered;
+                isLocked = foundPlayer;
+                hitPosition = hitpos;
+                isTriggered = triggy;
+            }
+        }
+
+        static GameObject pointer;
+        static LineRenderer lr;
+        static GunLibData data = new GunLibData(false, false, false);
+        
+        public static void GunCleanUp()
+        {
+            if (pointer == null || lr == null) { return; }
+            Object.Destroy(pointer);
+            pointer = null;
+            Object.Destroy(lr.gameObject);
+            lr = null;
+            data = new GunLibData(false, false, false);
+        }
+
+        public static GunLibData ShootLock()
+        {
+            try
+            {
+                RaycastHit hit;
+                if (XRSettings.isDeviceActive)
+                {
+                    bool rightHand3 = MenuPatch.FindButton("Right Hand Menu").Enabled;
+
+                    Transform controller;
+                    if (!rightHand3)
+                    {
+                        controller = GorillaLocomotion.Player.Instance.rightControllerTransform;
+                        data.isShooting = RightGrip;
+                        data.isTriggered = RightTrigger;
+                    }
+                    else
+                    {
+                        controller = GorillaLocomotion.Player.Instance.leftControllerTransform;
+                        data.isShooting = LeftGrip;
+                        data.isTriggered = LeftTrigger;
+                    }
+
+                    if (data.isShooting)
+                    {
+                        Renderer pr = pointer != null ? pointer.GetComponent<Renderer>() : null;
+                        if (data.lockedPlayer == null && !data.isLocked)
+                        {
+                            if (Physics.Raycast(controller.position - controller.up, -controller.up, out hit) && pointer == null)
+                            {
+                                pointer = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                                GameObject.Destroy(pointer.GetComponent<Rigidbody>());
+                                GameObject.Destroy(pointer.GetComponent<SphereCollider>());
+                                pointer.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+                                pr = pointer != null ? pointer.GetComponent<Renderer>() : null;
+                                pr.material.color = Color.red;
+                                pr.material.shader = Shader.Find("GUI/Text Shader");
+                            }
+                            if (lr == null)
+                            {
+                                var lrob = new GameObject("line");
+                                lr = lrob.AddComponent<LineRenderer>();
+                                lr.endWidth = 0.01f;
+                                lr.startWidth = 0.01f;
+                                lr.material.shader = Shader.Find("GUI/Text Shader");
+                            }
+                            lr.SetPosition(0, controller.position);
+                            lr.SetPosition(1, hit.point);
+                            data.hitPosition = hit.point;
+                            pointer.transform.position = hit.point;
+                            VRRig vrrig = hit.collider.GetComponentInParent<VRRig>();
+                            if (vrrig != null)
+                            {
+                                if (data.isTriggered)
+                                {
+                                    data.lockedPlayer = vrrig;
+                                    data.isLocked = true;
+                                    lr.startColor = Color.blue;
+                                    lr.endColor = Color.blue;
+                                    pr.material.color = Color.blue;
+                                }
+                                else
+                                {
+                                    data.isLocked = false;
+                                    lr.startColor = Color.green;
+                                    lr.endColor = Color.green;
+                                    pr.material.color = Color.green;
+                                    GorillaTagger.Instance.StartVibration(false, GorillaTagger.Instance.tagHapticStrength / 2, GorillaTagger.Instance.tagHapticDuration / 2);
+                                }
+                            }
+                            else
+                            {
+                                data.isLocked = false;
+                                lr.startColor = Color.red;
+                                lr.endColor = Color.red;
+                                pr.material.color = Color.red;
+                            }
+                        }
+
+                        if (data.isTriggered && data.lockedPlayer != null)
+                        {
+                            data.isLocked = true;
+                            lr.SetPosition(0, controller.position);
+                            lr.SetPosition(1, data.lockedPlayer.transform.position);
+                            data.hitPosition = data.lockedPlayer.transform.position;
+                            pointer.transform.position = data.lockedPlayer.transform.position;
+                            lr.startColor = Color.blue;
+                            lr.endColor = Color.blue;
+                            pr.material.color = Color.blue;
+                        }
+                        else if (data.lockedPlayer != null)
+                        {
+                            data.isLocked = false;
+                            data.lockedPlayer = null;
+                            lr.startColor = Color.red;
+                            lr.endColor = Color.red;
+                            pr.material.color = Color.red;
+                        }
+                    }
+                    else
+                    {
+                        GunCleanUp();
+                    }
+                    return data;
+                }
+                else
+                {
+                    data.isShooting = BepInEx.UnityInput.Current.GetMouseButton(1);
+                    data.isTriggered = BepInEx.UnityInput.Current.GetMouseButton(0);
+                    if (data.isShooting)
+                    {
+                        Renderer pr = pointer != null ? pointer.GetComponent<Renderer>() : null;
+                        if (data.lockedPlayer == null && !data.isLocked)
+                        {
+                            Ray ray = GameObject.Find("Shoulder Camera").GetComponent<Camera>() != null ? GameObject.Find("Shoulder Camera").GetComponent<Camera>().ScreenPointToRay(UnityInput.Current.mousePosition) : GorillaTagger.Instance.mainCamera.GetComponent<Camera>().ScreenPointToRay(UnityInput.Current.mousePosition);
+                            if (Physics.Raycast(ray.origin, ray.direction, out hit) && pointer == null)
+                            {
+                                pointer = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                                GameObject.Destroy(pointer.GetComponent<Rigidbody>());
+                                GameObject.Destroy(pointer.GetComponent<SphereCollider>());
+                                pointer.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+                                pr = pointer != null ? pointer.GetComponent<Renderer>() : null;
+                                pr.material.color = Color.red;
+                                pr.material.shader = Shader.Find("GUI/Text Shader");
+
+                            }
+                            if (lr == null)
+                            {
+                                var lrob = new GameObject("line");
+                                lr = lrob.AddComponent<LineRenderer>();
+                                lr.endWidth = 0.01f;
+                                lr.startWidth = 0.01f;
+                                lr.material.shader = Shader.Find("GUI/Text Shader");
+                            }
+                            lr.SetPosition(0, Player.Instance.headCollider.transform.position);
+                            lr.SetPosition(1, hit.point);
+                            data.hitPosition = hit.point;
+                            pointer.transform.position = hit.point;
+                            VRRig vrrig = hit.collider.GetComponentInParent<VRRig>();
+                            if (vrrig != null && data.lockedPlayer == null)
+                            {
+                                if (data.isTriggered)
+                                {
+                                    data.lockedPlayer = vrrig;
+                                    data.isLocked = true;
+                                }
+                                else
+                                {
+                                    data.isLocked = false;
+                                    lr.startColor = Color.green;
+                                    lr.endColor = Color.green;
+                                    pr.material.color = Color.green;
+                                }
+                            }
+                            else
+                            {
+                                data.isLocked = false;
+                                lr.startColor = Color.red;
+                                lr.endColor = Color.red;
+                                pr.material.color = Color.red;
+                            }
+                        }
+                        if (pr != null)
+                        {
+                            if (data.isTriggered && data.lockedPlayer != null)
+                            {
+                                lr.SetPosition(0, Player.Instance.rightControllerTransform.position);
+                                lr.SetPosition(1, data.lockedPlayer.transform.position);
+                                data.hitPosition = data.lockedPlayer.transform.position;
+                                pointer.transform.position = data.lockedPlayer.transform.position;
+                                data.isLocked = true;
+                                lr.startColor = Color.blue;
+                                lr.endColor = Color.blue;
+                                pr.material.color = Color.blue;
+                            }
+                            else if (data.lockedPlayer != null)
+                            {
+                                data.isLocked = false;
+                                data.lockedPlayer = null;
+                                lr.startColor = Color.red;
+                                lr.endColor = Color.red;
+                                pr.material.color = Color.red;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        GunCleanUp();
+                    }
+                    return data;
+                }
+            }
+            catch (Exception ex) { Debug.Log(ex.ToString()); return null; }
+        }
+
+        public static GunLibData Shoot()
+        {
+            try
+            {
+                if (XRSettings.isDeviceActive)
+                {
+                    bool rightHand3 = MenuPatch.FindButton("Right Hand Menu").Enabled;
+                    Transform controller;
+                    if (!rightHand3)
+                    {
+                        controller = GorillaLocomotion.Player.Instance.rightControllerTransform;
+                        data.isShooting = RightGrip;
+                        data.isTriggered = RightTrigger;
+                    }
+                    else
+                    {
+                        controller = GorillaLocomotion.Player.Instance.leftControllerTransform;
+                        data.isShooting = LeftGrip;
+                        data.isTriggered = LeftGrip;
+                    }
+                    if (data.isShooting)
+                    {
+                        RaycastHit hit;
+                        Renderer pr = pointer != null ? pointer.GetComponent<Renderer>() : null;
+                        if (Physics.Raycast(controller.position - controller.up, -controller.up, out hit) && pointer == null)
+                        {
+                            pointer = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                            GameObject.Destroy(pointer.GetComponent<Rigidbody>());
+                            GameObject.Destroy(pointer.GetComponent<SphereCollider>());
+                            pointer.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+                            pr = pointer != null ? pointer.GetComponent<Renderer>() : null;
+                            pr.material.color = Color.red;
+                            pr.material.shader = Shader.Find("GUI/Text Shader");
+                        }
+                        if (lr == null)
+                        {
+                            var lrob = new GameObject("line");
+                            lr = lrob.AddComponent<LineRenderer>();
+                            lr.endWidth = 0.01f;
+                            lr.startWidth = 0.01f;
+                            lr.material.shader = Shader.Find("GUI/Text Shader");
+                        }
+                        lr.SetPosition(0, controller.position);
+                        lr.SetPosition(1, hit.point);
+                        data.hitPosition = hit.point;
+                        pointer.transform.position = hit.point;
+                        VRRig rig = hit.collider.GetComponentInParent<VRRig>();
+                        if (rig != null)
+                        {
+                            if (data.isTriggered)
+                            {
+                                data.lockedPlayer = rig;
+                                data.isLocked = true;
+                                pr.material.color = Color.blue;
+                                lr.startColor = Color.blue;
+                                lr.endColor = Color.blue;
+                            }
+                            else
+                            {
+                                lr.startColor = Color.green;
+                                lr.endColor = Color.green;
+                                pr.material.color = Color.green;
+                                data.isLocked = false;
+                                GorillaTagger.Instance.StartVibration(false, GorillaTagger.Instance.tagHapticStrength / 3, GorillaTagger.Instance.tagHapticDuration / 2);
+                            }
+                        }
+                        else
+                        {
+                            lr.startColor = Color.red;
+                            lr.endColor = Color.red;
+                            pr.material.color = Color.red;
+                            data.isLocked = false;
+                        }
+
+                    }
+                    else
+                    {
+                        GunCleanUp();
+                    }
+                    return data;
+                }
+                else
+                {
+                    RaycastHit hit;
+                    data.isShooting = true;
+                    data.isTriggered = BepInEx.UnityInput.Current.GetMouseButton(0);
+                    Renderer pr = pointer != null ? pointer.GetComponent<Renderer>() : null;
+                    Ray ray = GameObject.Find("Shoulder Camera").GetComponent<Camera>() != null ? GameObject.Find("Shoulder Camera").GetComponent<Camera>().ScreenPointToRay(UnityInput.Current.mousePosition) : GorillaTagger.Instance.mainCamera.GetComponent<Camera>().ScreenPointToRay(UnityInput.Current.mousePosition);
+                    if (Physics.Raycast(ray.origin, ray.direction, out hit) && pointer == null)
+                    {
+                        pointer = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                        GameObject.Destroy(pointer.GetComponent<Rigidbody>());
+                        GameObject.Destroy(pointer.GetComponent<SphereCollider>());
+                        pointer.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+                        pr = pointer != null ? pointer.GetComponent<Renderer>() : null;
+                        pr.material.color = Color.red;
+                        pr.material.shader = Shader.Find("GUI/Text Shader");
+                    }
+                    if (lr == null)
+                    {
+                        var lrob = new GameObject("line");
+                        lr = lrob.AddComponent<LineRenderer>();
+                        lr.endWidth = 0.01f;
+                        lr.startWidth = 0.01f;
+                        lr.material.shader = Shader.Find("GUI/Text Shader");
+                    }
+                    lr.SetPosition(0, Player.Instance.headCollider.transform.position);
+                    lr.SetPosition(1, hit.point);
+                    data.hitPosition = hit.point;
+                    pointer.transform.position = hit.point;
+                    VRRig rig = hit.collider.GetComponentInParent<VRRig>();
+                    if (rig != null)
+                    {
+                        if (data.isTriggered)
+                        {
+                            data.isLocked = true;
+                            lr.startColor = Color.blue;
+                            lr.endColor = Color.blue;
+                            pr.material.color = Color.blue;
+                        }
+                        else
+                        {
+                            data.isLocked = false;
+                            lr.startColor = Color.green;
+                            lr.endColor = Color.green;
+                            pr.material.color = Color.green;
+                        }
+                    }
+                    else
+                    {
+                        data.isLocked = false;
+                        lr.startColor = Color.red;
+                        lr.endColor = Color.red;
+                        pr.material.color = Color.red;
+                    }
+                    return data;
+                }
+            }
+            catch (Exception ex) { Debug.Log(ex.ToString()); return null; }
+        }
+    }
+}

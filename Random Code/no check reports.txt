@@ -1,0 +1,8 @@
+[HarmonyPatch(typeof(GorillaNot), "CheckReports", MethodType.Enumerator)]
+        public class NoCheckReport : MonoBehaviour
+        {
+            static bool Prefix()
+            {
+                return false;
+            }
+        }

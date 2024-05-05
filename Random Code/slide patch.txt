@@ -1,0 +1,9 @@
+[HarmonyPatch(typeof(GorillaLocomotion.Player), "GetSlidePercentage", MethodType.Normal)]
+        public class SlidePatch : MonoBehaviour
+        {
+            private static void Postfix(Player __instance, ref float __result)
+            {
+                if (MenuPatch.FindButton("Grip Monke").Enabled)
+                    __result = 0;
+            }
+        }

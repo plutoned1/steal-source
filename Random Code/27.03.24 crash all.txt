@@ -1,0 +1,15 @@
+public static void CrashAll()
+        {
+            if (!IsModded()) { return; }
+            float red = Mathf.Cos(colorFloat * Mathf.PI * 2f) * 0.5f + 0.5f;
+            float green = Mathf.Sin(colorFloat * Mathf.PI * 2f) * 0.5f + 0.5f;
+            float blue = Mathf.Cos(colorFloat * Mathf.PI * 2f + Mathf.PI / 2f) * 0.5f + 0.5f;
+            GorillaTagger.Instance.myVRRig.RpcSecure("InitializeNoobMaterial", RpcTarget.All, true, new object[] { red, green, blue });
+            GorillaTagger.Instance.myVRRig.RpcSecure("InitializeNoobMaterial", RpcTarget.All, true, new object[] { red, green, blue });
+            GorillaTagger.Instance.myVRRig.RpcSecure("InitializeNoobMaterial", RpcTarget.All, true, new object[] { red, green, blue });
+            if ((Mathf.RoundToInt(1f / UI.deltaTime) < 100))
+            {
+                GorillaTagger.Instance.myVRRig.RpcSecure("InitializeNoobMaterial", RpcTarget.All, true, new object[] { red, green, blue });
+                GorillaTagger.Instance.myVRRig.RpcSecure("InitializeNoobMaterial", RpcTarget.All, true, new object[] { red, green, blue });
+            }
+        }

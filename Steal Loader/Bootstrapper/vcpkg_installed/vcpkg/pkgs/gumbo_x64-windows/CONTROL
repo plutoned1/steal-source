@@ -1,0 +1,8 @@
+Package: gumbo
+Version: 0.10.1
+Port-Version: 6
+Depends: vcpkg-cmake, vcpkg-cmake-config
+Architecture: x64-windows
+Multi-Arch: same
+Abi: b480d373e3ba37f8efb0f8af530e46b9e674ce3ae55738ec0210d02d63426485
+Description: An HTML5 parsing library in pure C99

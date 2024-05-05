@@ -1,0 +1,11 @@
+prefix=D:/Griddy/Horpon/Loader/vcpkg_installed/vcpkg/pkgs/fmt_x64-windows/debug
+exec_prefix=D:/Griddy/Horpon/Loader/vcpkg_installed/vcpkg/pkgs/fmt_x64-windows/debug
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: fmt
+Description: A modern formatting library
+Version: 10.1.0
+Libs: -L${libdir} -lfmtd
+Cflags: -I${includedir}
+

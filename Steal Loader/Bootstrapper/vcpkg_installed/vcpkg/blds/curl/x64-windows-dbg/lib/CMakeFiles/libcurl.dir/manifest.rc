@@ -1,0 +1,2 @@
+#pragma code_page(65001)
+2 /* CREATEPROCESS_MANIFEST_RESOURCE_ID */ 24 /* RT_MANIFEST */ "D:/Griddy/Horpon/Loader/vcpkg_installed/vcpkg/blds/curl/x64-windows-dbg/lib/CMakeFiles/libcurl.dir/embed.manifest"

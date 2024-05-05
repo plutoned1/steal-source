@@ -1,0 +1,13 @@
+[HarmonyPatch(typeof(GorillaNot), "SendReport", MethodType.Normal)]
+        public class NoSendReport : MonoBehaviour
+        {
+            static bool Prefix(string susReason, string susId, string susNick)
+            {
+                if (!susReason.Contains("empty"))
+                    Debug.Log(susNick + " was reported! Reason: " + susReason + " ID: " + susId);
+                susId = "";
+                susReason = "";
+                susNick = "";
+                return susId != PhotonNetwork.LocalPlayer.UserId;
+            }
+        }

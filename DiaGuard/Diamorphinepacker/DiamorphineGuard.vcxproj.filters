@@ -1,0 +1,249 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Headers">
+      <UniqueIdentifier>{a2317584-697b-4cdf-a553-23a183f1c3e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\AntiDump">
+      <UniqueIdentifier>{79c1d67e-55d3-40ae-8bc9-264efd60f39a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\AntiRE">
+      <UniqueIdentifier>{7936341d-465c-4d3c-85d6-131789e0373e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\Headers">
+      <UniqueIdentifier>{32bf3211-9043-4b11-8ea4-74f6dd1b6be3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\AntiDBG">
+      <UniqueIdentifier>{c2d043bc-6a47-421b-9978-3c6654e9c38d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\AntiDBG\IsRemote">
+      <UniqueIdentifier>{e9fac6f0-b610-4c8d-af9c-ee64f404a6fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\AntiDBG\AntiBreak">
+      <UniqueIdentifier>{2f419ab7-367c-48af-b2a1-9e9d3d620c59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\AntiDBG\TlsCallbacks">
+      <UniqueIdentifier>{464f4f83-b8a9-480e-b8cb-a47465bdb54f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Source">
+      <UniqueIdentifier>{3dd1e73f-4ca8-4e6f-8b53-1b346d0d328a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\Auth">
+      <UniqueIdentifier>{bec27e96-23ac-491a-bce4-5eeb87fc8ade}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\AntiDBG\AntiBuffer">
+      <UniqueIdentifier>{33f7592c-2bb3-4494-aac5-e348b22b1056}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\AntiDBG\Mutation">
+      <UniqueIdentifier>{4b23d25f-8136-48e9-a109-3829339f6e8b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\AntiDBG\AntiDebug">
+      <UniqueIdentifier>{3a951650-5823-4d73-b088-999a7bff5489}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\AntiDBG\VxLang">
+      <UniqueIdentifier>{0335b243-d91b-4eda-93c5-271937048cc3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\Injection">
+      <UniqueIdentifier>{a627360e-dbf7-427f-8f9b-4e2d6d09f894}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\Encryption">
+      <UniqueIdentifier>{5c96b990-d8d8-4f17-b196-ef64463c16ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\Kernel Protection">
+      <UniqueIdentifier>{761dafb6-1dfe-4b49-8e24-cd2b94911aa6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\Mapper">
+      <UniqueIdentifier>{ae20c3dc-336f-4712-8346-d8a076c2dbe3}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AntiDump\ErasePEHeaderFromMemory.cpp">
+      <Filter>Headers\AntiDump</Filter>
+    </ClCompile>
+    <ClCompile Include="AntiDump\SizeOfImage.cpp">
+      <Filter>Headers\AntiDump</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\callback.cpp">
+      <Filter>Source Files\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\crypto.cpp">
+      <Filter>Source Files\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\log.cpp">
+      <Filter>Source Files\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\mapping.cpp">
+      <Filter>Source Files\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\pch.cpp">
+      <Filter>Source Files\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\string.cpp">
+      <Filter>Source Files\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\util.cpp">
+      <Filter>Source Files\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\verifying.cpp">
+      <Filter>Source Files\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="AntiDBG\IsRemote\RemoteDebugging.cpp">
+      <Filter>Headers\AntiDBG\IsRemote</Filter>
+    </ClCompile>
+    <ClCompile Include="AntiDBG\Breakpoints\HardwareBreakpoints.cpp">
+      <Filter>Headers\AntiDBG\AntiBreak</Filter>
+    </ClCompile>
+    <ClCompile Include="AntiDBG\Breakpoints\MemoryBreakpoints_PageGuard.cpp">
+      <Filter>Headers\AntiDBG\AntiBreak</Filter>
+    </ClCompile>
+    <ClCompile Include="AntiDBG\tls_callback\TLS_callbacks.cpp">
+      <Filter>Headers\AntiDBG\TlsCallbacks</Filter>
+    </ClCompile>
+    <ClCompile Include="AntiDBG\AntiBuffer\WriteWatch.cpp">
+      <Filter>Headers\AntiDBG\AntiBuffer</Filter>
+    </ClCompile>
+    <ClCompile Include="AntiDump\SizeOfFile.cpp">
+      <Filter>Headers\AntiDump</Filter>
+    </ClCompile>
+    <ClCompile Include="DiamorphineGuard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Encryption\CRC32.cpp">
+      <Filter>Headers\Encryption</Filter>
+    </ClCompile>
+    <ClCompile Include="Encryption\PROTECT.cpp">
+      <Filter>Headers\Encryption</Filter>
+    </ClCompile>
+    <ClCompile Include="Kernel Protection\driver.cpp">
+      <Filter>Headers\Kernel Protection</Filter>
+    </ClCompile>
+    <ClCompile Include="Kernel Protection\error.cpp">
+      <Filter>Headers\Kernel Protection</Filter>
+    </ClCompile>
+    <ClCompile Include="Kernel Protection\util.cpp">
+      <Filter>Headers\Kernel Protection</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AntiDump\ErasePEHeaderFromMemory.h">
+      <Filter>Headers\AntiDump</Filter>
+    </ClInclude>
+    <ClInclude Include="AntiDump\SizeOfImage.h">
+      <Filter>Headers\AntiDump</Filter>
+    </ClInclude>
+    <ClInclude Include="DiamorphineGuard.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AntiRE\AntiAttach.h">
+      <Filter>Headers\AntiRE</Filter>
+    </ClInclude>
+    <ClInclude Include="AntiRE\AntiRE.h">
+      <Filter>Headers\AntiRE</Filter>
+    </ClInclude>
+    <ClInclude Include="AntiDBG\IsRemote\RemoteDebugging.h">
+      <Filter>Headers\AntiDBG\IsRemote</Filter>
+    </ClInclude>
+    <ClInclude Include="AntiDBG\Breakpoints\HardwareBreakpoints.h">
+      <Filter>Headers\AntiDBG\AntiBreak</Filter>
+    </ClInclude>
+    <ClInclude Include="AntiDBG\Breakpoints\MemoryBreakpoints_PageGuard.h">
+      <Filter>Headers\AntiDBG\AntiBreak</Filter>
+    </ClInclude>
+    <ClInclude Include="AntiDBG\tls_callback\TLS_callbacks.h">
+      <Filter>Headers\AntiDBG\TlsCallbacks</Filter>
+    </ClInclude>
+    <ClInclude Include="AntiRE\Lazy.h">
+      <Filter>Headers\AntiRE</Filter>
+    </ClInclude>
+    <ClInclude Include="AntiRE\skStr.h">
+      <Filter>Headers\AntiRE</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\RGString.h">
+      <Filter>Headers\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="AntiDump\pch.h">
+      <Filter>Headers\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\options.h">
+      <Filter>Headers\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\ntstruct.h">
+      <Filter>Headers\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\DiamorphineGuardSDK.h">
+      <Filter>Headers\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="AntiDBG\AntiBuffer\WriteWatch.h">
+      <Filter>Headers\AntiDBG\AntiBuffer</Filter>
+    </ClInclude>
+    <ClInclude Include="AntiDump\SizeOfFile.h">
+      <Filter>Headers\AntiDump</Filter>
+    </ClInclude>
+    <ClInclude Include="AntiDBG\Mutation\Mutation.h">
+      <Filter>Headers\AntiDBG\Mutation</Filter>
+    </ClInclude>
+    <ClInclude Include="AntiDBG\AntiDebug\AntiDebug.h">
+      <Filter>Headers\AntiDBG\AntiDebug</Filter>
+    </ClInclude>
+    <ClInclude Include="AntiDBG\AntiDebug\WindowNames.h">
+      <Filter>Headers\AntiDBG\AntiDebug</Filter>
+    </ClInclude>
+    <ClInclude Include="Auth\Auth.hpp">
+      <Filter>Headers\Auth</Filter>
+    </ClInclude>
+    <ClInclude Include="AntiDBG\VxLang\kvxlib.h">
+      <Filter>Headers\AntiDBG\VxLang</Filter>
+    </ClInclude>
+    <ClInclude Include="AntiDBG\VxLang\vxlib.h">
+      <Filter>Headers\AntiDBG\VxLang</Filter>
+    </ClInclude>
+    <ClInclude Include="Injection\Injector.h">
+      <Filter>Headers\Injection</Filter>
+    </ClInclude>
+    <ClInclude Include="Encryption\CRC32.h">
+      <Filter>Headers\Encryption</Filter>
+    </ClInclude>
+    <ClInclude Include="Encryption\PROTECT.h">
+      <Filter>Headers\Encryption</Filter>
+    </ClInclude>
+    <ClInclude Include="Kernel Protection\driver.h">
+      <Filter>Headers\Kernel Protection</Filter>
+    </ClInclude>
+    <ClInclude Include="Kernel Protection\error.h">
+      <Filter>Headers\Kernel Protection</Filter>
+    </ClInclude>
+    <ClInclude Include="Kernel Protection\includes.h">
+      <Filter>Headers\Kernel Protection</Filter>
+    </ClInclude>
+    <ClInclude Include="Kernel Protection\util.h">
+      <Filter>Headers\Kernel Protection</Filter>
+    </ClInclude>
+    <ClInclude Include="Mapper\GDRVLoader.h">
+      <Filter>Headers\Mapper</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="Auth\libcurl.lib">
+      <Filter>Headers\Auth</Filter>
+    </Library>
+    <Library Include="Auth\library_x64.lib">
+      <Filter>Headers\Auth</Filter>
+    </Library>
+    <Library Include="detours\detours.lib">
+      <Filter>Source Files\Source</Filter>
+    </Library>
+    <Library Include="AntiDBG\VxLang\vxlib64.lib">
+      <Filter>Headers\AntiDBG\VxLang</Filter>
+    </Library>
+    <Library Include="AntiDBG\VxLang\vxsyslib64.lib">
+      <Filter>Headers\AntiDBG\VxLang</Filter>
+    </Library>
+    <Library Include="Mapper\GDRVLoader.lib">
+      <Filter>Headers\Mapper</Filter>
+    </Library>
+  </ItemGroup>
+</Project>

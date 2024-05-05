@@ -1,0 +1,35 @@
+public static void FPSBoost()
+        {
+            Shader gorillaTagUberShader = Shader.Find("GorillaTag/UberShader");
+            if (gorillaTagUberShader == null)
+            {
+                Debug.LogError("GorillaTag/UberShader not found.");
+                return;
+            }
+
+            Renderer[] renderers = Resources.FindObjectsOfTypeAll<Renderer>();
+            Material replacementTemplate = new Material(gorillaTagUberShader);
+
+            foreach (Renderer renderer in renderers)
+            {
+                try
+                {
+                    if (renderer.material.shader == gorillaTagUberShader)
+                    {
+                        if (!originalMaterials.ContainsKey(renderer))
+                        {
+                            originalMaterials[renderer] = renderer.material;
+                        }
+
+                        Material replacement = new Material(replacementTemplate) { color = Color.grey };
+                        renderer.material = replacement;
+                    }
+                }
+                catch (Exception exception)
+                {
+                    Debug.LogError($"mat error {exception.StackTrace} - {exception.Message}");
+                }
+            }
+
+            Object.Destroy(replacementTemplate);
+        }

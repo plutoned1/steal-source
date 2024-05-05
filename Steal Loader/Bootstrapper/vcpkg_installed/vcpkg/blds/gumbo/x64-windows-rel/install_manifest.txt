@@ -1,0 +1,6 @@
+D:/Griddy/Horpon/Loader/vcpkg_installed/vcpkg/pkgs/gumbo_x64-windows/lib/gumbo.lib
+D:/Griddy/Horpon/Loader/vcpkg_installed/vcpkg/pkgs/gumbo_x64-windows/include/gumbo.h
+D:/Griddy/Horpon/Loader/vcpkg_installed/vcpkg/pkgs/gumbo_x64-windows/include/tag_enum.h
+D:/Griddy/Horpon/Loader/vcpkg_installed/vcpkg/pkgs/gumbo_x64-windows/share/unofficial-gumbo/unofficial-gumbo-config.cmake
+D:/Griddy/Horpon/Loader/vcpkg_installed/vcpkg/pkgs/gumbo_x64-windows/share/unofficial-gumbo/unofficial-gumbo-config-release.cmake
+D:/Griddy/Horpon/Loader/vcpkg_installed/vcpkg/pkgs/gumbo_x64-windows/lib/pkgconfig/gumbo.pc

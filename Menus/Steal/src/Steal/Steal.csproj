@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x64</Platform>
+    <ProjectGuid>{63E13C52-6069-449B-8B45-8CBEF32FA8A2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Steal</RootNamespace>
+    <AssemblyName>Steal</AssemblyName>
+    <TargetFrameworkVersion>v2.1</TargetFrameworkVersion>
+    <TargetFrameworkIdentifier>.NETStandard</TargetFrameworkIdentifier>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="0Harmony" />
+    <Reference Include="Assembly-CSharp" />
+    <Reference Include="BepInEx" />
+    <Reference Include="Cinemachine" />
+    <Reference Include="netstandard">
+      <HintPath>..\..\..\..\..\..\..\..\Program Files\dotnet\shared\Microsoft.NETCore.App\8.0.2\netstandard.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json" />
+    <Reference Include="Photon3Unity3D" />
+    <Reference Include="PhotonRealtime" />
+    <Reference Include="PhotonUnityNetworking" />
+    <Reference Include="PhotonVoice" />
+    <Reference Include="PhotonVoice.API" />
+    <Reference Include="PhotonVoice.PUN" />
+    <Reference Include="PlayFab" />
+    <Reference Include="SteamVR" />
+    <Reference Include="SteamVR_Actions" />
+    <Reference Include="UnityEngine.AssetBundleModule" />
+    <Reference Include="UnityEngine.AudioModule" />
+    <Reference Include="UnityEngine.CoreModule" />
+    <Reference Include="UnityEngine.ImageConversionModule" />
+    <Reference Include="UnityEngine.IMGUIModule" />
+    <Reference Include="UnityEngine.PhysicsModule" />
+    <Reference Include="UnityEngine.TextRenderingModule" />
+    <Reference Include="UnityEngine.UI" />
+    <Reference Include="UnityEngine.UIModule" />
+    <Reference Include="UnityEngine.VRModule" />
+    <Reference Include="UnityEngine.XRModule" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Background\AssetLoader.cs" />
+    <Compile Include="Background\DiscordRPC.cs" />
+    <Compile Include="Background\GunLib.cs" />
+    <Compile Include="Background\InputHandler.cs" />
+    <Compile Include="Background\Mods\AdminControls.cs" />
+    <Compile Include="Background\Mods\Mod.cs" />
+    <Compile Include="Background\Mods\Movement.cs" />
+    <Compile Include="Background\Mods\Overpowered.cs" />
+    <Compile Include="Background\Mods\PlayerMods.cs" />
+    <Compile Include="Background\Mods\RoomManager.cs" />
+    <Compile Include="Background\Mods\Visual.cs" />
+    <Compile Include="Background\RPCSUB.cs" />
+    <Compile Include="Background\Security\AuthClient.cs" />
+    <Compile Include="Background\Security\Auth\auth.cs" />
+    <Compile Include="Background\Security\Auth\Base.cs" />
+    <Compile Include="Background\Security\Auth\Data.cs" />
+    <Compile Include="Background\Security\Auth\encryption.cs" />
+    <Compile Include="Background\Security\Auth\json_wrapper.cs" />
+    <Compile Include="Background\SettingsLib.cs" />
+    <Compile Include="Background\ShowConsole.cs" />
+    <Compile Include="Background\UIAlerts.cs" />
+    <Compile Include="Background\Version.cs" />
+    <Compile Include="Background\VersionJSON.cs" />
+    <Compile Include="BetterBanMessage\OnPlayFabError.cs" />
+    <Compile Include="BetterBanMessage\ShowBanMessage.cs" />
+    <Compile Include="Components\GhostRig.cs" />
+    <Compile Include="Components\ModsListInterface.cs" />
+    <Compile Include="Components\NameTags.cs" />
+    <Compile Include="Components\PocketWatch.cs" />
+    <Compile Include="Components\StealExtensions.cs" />
+    <Compile Include="Components\VelocityTracker.cs" />
+    <Compile Include="GorillaOS\GorillaOS.cs" />
+    <Compile Include="GorillaOS\Patchers\CreditsPatch.cs" />
+    <Compile Include="GorillaOS\Patchers\FunctionsPatch.cs" />
+    <Compile Include="GorillaOS\Patchers\SupportPatch.cs" />
+    <Compile Include="GorillaOS\Patchers\UpdateScreenPatch.cs" />
+    <Compile Include="MenuPatch.cs" />
+    <Compile Include="ModsList.cs" />
+    <Compile Include="Notif.cs" />
+    <Compile Include="Patchers\GorillaNotPatchers\NoCheckReports.cs" />
+    <Compile Include="Patchers\GorillaNotPatchers\NoCloseInvalidRoom.cs" />
+    <Compile Include="Patchers\GorillaNotPatchers\NoLogErrorCount.cs" />
+    <Compile Include="Patchers\GorillaNotPatchers\NoQuitDelay.cs" />
+    <Compile Include="Patchers\GorillaNotPatchers\NoSendReport.cs" />
+    <Compile Include="Patchers\GorillaNotPatchers\NoShouldDisconnectFromRoom.cs" />
+    <Compile Include="Patchers\GorillaNotPatchers\ReportTagPatch.cs" />
+    <Compile Include="Patchers\Misc\AntiTeleport.cs" />
+    <Compile Include="Patchers\Misc\GameObjectPatch.cs" />
+    <Compile Include="Patchers\Misc\GorillaQuitBoxPatcher.cs" />
+    <Compile Include="Patchers\Misc\NoGracePeriod.cs" />
+    <Compile Include="Patchers\Misc\NoGracePeriod2.cs" />
+    <Compile Include="Patchers\Misc\NoGracePeriod3.cs" />
+    <Compile Include="Patchers\Misc\NoGracePeriod4.cs" />
+    <Compile Include="Patchers\ModPatches\NoInitializeScreenTimeTracker.cs" />
+    <Compile Include="Patchers\Playfab\NoAttributeInstall.cs" />
+    <Compile Include="Patchers\Playfab\NoDeviceInfo.cs" />
+    <Compile Include="Patchers\Playfab\NoDeviceInfo1.cs" />
+    <Compile Include="Patchers\Playfab\NoDeviceInfo2.cs" />
+    <Compile Include="Patchers\Playfab\NoDoAttributeInstall.cs" />
+    <Compile Include="Patchers\Playfab\NoGetAdvertIdFromUnity.cs" />
+    <Compile Include="Patchers\Playfab\NoInitializeScreenTimeTracker.cs" />
+    <Compile Include="Patchers\TeleportationLib.cs" />
+    <Compile Include="Patchers\VRRigPatchers\OnDisable.cs" />
+    <Compile Include="Patchers\VRRigPatchers\OnEnable.cs" />
+    <Compile Include="Patches\NoLag.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources.click" />
+    <EmbeddedResource Include="Resources\DiscordRPC.dll" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

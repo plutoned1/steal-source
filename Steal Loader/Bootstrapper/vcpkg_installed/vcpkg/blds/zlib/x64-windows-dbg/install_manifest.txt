@@ -1,0 +1,2 @@
+D:/Griddy/Horpon/Loader/vcpkg_installed/vcpkg/pkgs/zlib_x64-windows/debug/lib/zlibd.lib
+D:/Griddy/Horpon/Loader/vcpkg_installed/vcpkg/pkgs/zlib_x64-windows/debug/bin/zlibd1.dll

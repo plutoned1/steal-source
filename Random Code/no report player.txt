@@ -1,0 +1,8 @@
+   [HarmonyPatch(typeof(PlayFabClientInstanceAPI), "ReportPlayer", MethodType.Normal)]
+        public class NoReportPlayer : MonoBehaviour
+        {
+            static bool Prefix(ReportPlayerClientRequest request, Action<ReportPlayerClientResult> resultCallback, Action<PlayFabError> errorCallback, object customData = null, Dictionary<string, string> extraHeaders = null)
+            {
+                return false;
+            }
+        }

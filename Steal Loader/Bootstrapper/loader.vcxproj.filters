@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="skStr.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="auth\auth.hpp">
+      <Filter>Source\auth</Filter>
+    </ClInclude>
+    <ClInclude Include="mapper\map.h">
+      <Filter>Source\mapper</Filter>
+    </ClInclude>
+    <ClInclude Include="sec\anti_debugger.h">
+      <Filter>Source\sec</Filter>
+    </ClInclude>
+    <ClInclude Include="sec\antidebuggger.h">
+      <Filter>Source\sec</Filter>
+    </ClInclude>
+    <ClInclude Include="sec\antivm.h">
+      <Filter>Source\sec</Filter>
+    </ClInclude>
+    <ClInclude Include="sec\dbg.h">
+      <Filter>Source\sec</Filter>
+    </ClInclude>
+    <ClInclude Include="sec\ida.h">
+      <Filter>Source\sec</Filter>
+    </ClInclude>
+    <ClInclude Include="sec\lazy.h">
+      <Filter>Source\sec</Filter>
+    </ClInclude>
+    <ClInclude Include="sec\odd.h">
+      <Filter>Source\sec</Filter>
+    </ClInclude>
+    <ClInclude Include="sec\process.h">
+      <Filter>Source\sec</Filter>
+    </ClInclude>
+    <ClInclude Include="sec\prot.h">
+      <Filter>Source\sec</Filter>
+    </ClInclude>
+    <ClInclude Include="sec\protector.h">
+      <Filter>Source\sec</Filter>
+    </ClInclude>
+    <ClInclude Include="sec\safe_ptr.hpp">
+      <Filter>Source\sec</Filter>
+    </ClInclude>
+    <ClInclude Include="sec\structs.h">
+      <Filter>Source\sec</Filter>
+    </ClInclude>
+    <ClInclude Include="sec\undump.h">
+      <Filter>Source\sec</Filter>
+    </ClInclude>
+    <ClInclude Include="sec\xor.h">
+      <Filter>Source\sec</Filter>
+    </ClInclude>
+    <ClInclude Include="sec\antidump.h">
+      <Filter>Source\sec</Filter>
+    </ClInclude>
+    <ClInclude Include="color.h">
+      <Filter>Source\other</Filter>
+    </ClInclude>
+    <ClInclude Include="sec\bsod.h">
+      <Filter>Source\sec</Filter>
+    </ClInclude>
+    <ClInclude Include="sec\protector.hpp">
+      <Filter>Source\sec</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source">
+      <UniqueIdentifier>{9be580dd-0ada-4230-b959-bdc2e0bc3643}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\auth">
+      <UniqueIdentifier>{176912cb-4490-4d98-a52f-15783ca49f72}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\sec">
+      <UniqueIdentifier>{ff5bc4ba-506a-480e-9e44-c2a112385149}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\mapper">
+      <UniqueIdentifier>{7080e7e8-53cb-4438-8b95-ff5dcb886cbf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\other">
+      <UniqueIdentifier>{f7687b50-fa6d-40d5-a557-35de48b990d0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Loader.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="mapper\map.cpp">
+      <Filter>Source\mapper</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="auth\libcurl.lib">
+      <Filter>Source\auth</Filter>
+    </Library>
+    <Library Include="auth\library_x64.lib">
+      <Filter>Source\auth</Filter>
+    </Library>
+  </ItemGroup>
+</Project>

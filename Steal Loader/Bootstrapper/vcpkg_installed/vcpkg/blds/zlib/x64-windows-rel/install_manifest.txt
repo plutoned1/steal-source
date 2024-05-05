@@ -1,0 +1,4 @@
+D:/Griddy/Horpon/Loader/vcpkg_installed/vcpkg/pkgs/zlib_x64-windows/lib/zlib.lib
+D:/Griddy/Horpon/Loader/vcpkg_installed/vcpkg/pkgs/zlib_x64-windows/bin/zlib1.dll
+D:/Griddy/Horpon/Loader/vcpkg_installed/vcpkg/pkgs/zlib_x64-windows/include/zconf.h
+D:/Griddy/Horpon/Loader/vcpkg_installed/vcpkg/pkgs/zlib_x64-windows/include/zlib.h

@@ -1,0 +1,14 @@
+# ninja log v5
+9	62	7250592617917685	CMakeFiles/gumbo.dir/src/string_piece.c.obj	e216b9460ed3db03
+3	64	7250592617927687	CMakeFiles/gumbo.dir/src/attribute.c.obj	6f19aa8500d238a6
+8	69	7250592617957704	CMakeFiles/gumbo.dir/src/string_buffer.c.obj	60628a5743832d0b
+6	99	7250592618217745	CMakeFiles/gumbo.dir/src/error.c.obj	26b7e35e26dacd3b
+10	99	7250592618047721	CMakeFiles/gumbo.dir/src/tag.c.obj	896ed72fc8d689d8
+14	100	7250592618177744	CMakeFiles/gumbo.dir/src/util.c.obj	e2c81b9720891d07
+12	102	7250592618177744	CMakeFiles/gumbo.dir/src/utf8.c.obj	888a705fe8b9e90d
+15	102	7250592618077720	CMakeFiles/gumbo.dir/src/vector.c.obj	59cacab0b6e5dc75
+11	127	7250592618577827	CMakeFiles/gumbo.dir/src/tokenizer.c.obj	2291622e9c2ecb3a
+7	560	7250592622838785	CMakeFiles/gumbo.dir/src/parser.c.obj	49c840b5def8039d
+5	2131	7250592638470021	CMakeFiles/gumbo.dir/src/char_ref.c.obj	4efc4e1b327c784a
+2131	2154	7250592638850111	gumbo.lib	b5995fbc2760e425
+2154	2185	0	CMakeFiles/install.util	341518694e31eac2

@@ -1,0 +1,28 @@
+ublic static void CopyGun()
+        {
+            GunLib.GunLibData data = GunLib.ShootLock();
+            if (data.isShooting && data.isTriggered && data.isLocked)
+            {
+                if (GorillaTagger.Instance.offlineVRRig.enabled)
+                {
+                    Steal.Patchers.VRRigPatchers.OnDisable.Prefix(GorillaTagger.Instance.offlineVRRig);
+                }
+
+                GorillaTagger.Instance.offlineVRRig.enabled = false;
+
+                GorillaTagger.Instance.offlineVRRig.transform.position = data.lockedPlayer.transform.position;
+
+                GorillaTagger.Instance.offlineVRRig.rightHand.rigTarget.transform.position =
+                    data.lockedPlayer.rightHand.rigTarget.transform.position;
+                GorillaTagger.Instance.offlineVRRig.leftHand.rigTarget.transform.position =
+                    data.lockedPlayer.leftHand.rigTarget.transform.position;
+
+                GorillaTagger.Instance.offlineVRRig.transform.rotation = data.lockedPlayer.transform.rotation;
+
+                GorillaTagger.Instance.offlineVRRig.head.rigTarget.rotation = data.lockedPlayer.head.rigTarget.rotation;
+            }
+            else
+            {
+                ResetRig();
+            }
+        }

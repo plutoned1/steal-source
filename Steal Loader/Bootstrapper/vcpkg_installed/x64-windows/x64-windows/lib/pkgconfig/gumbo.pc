@@ -1,0 +1,11 @@
+prefix=${pcfiledir}/../..
+exec_prefix=
+libdir=
+includedir=
+
+Name: Gumbo
+Description: A fully-compliant HTML5 parser.
+Version: 
+
+Libs: "-L${libdir}" -lgumbo
+Cflags: "-I${includedir}"

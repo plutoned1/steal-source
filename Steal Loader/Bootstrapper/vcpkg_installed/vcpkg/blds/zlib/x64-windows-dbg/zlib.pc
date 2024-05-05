@@ -1,0 +1,13 @@
+prefix=D:/Griddy/Horpon/Loader/vcpkg_installed/vcpkg/pkgs/zlib_x64-windows/debug
+exec_prefix=D:/Griddy/Horpon/Loader/vcpkg_installed/vcpkg/pkgs/zlib_x64-windows/debug
+libdir=D:/Griddy/Horpon/Loader/vcpkg_installed/vcpkg/pkgs/zlib_x64-windows/debug/lib
+sharedlibdir=D:/Griddy/Horpon/Loader/vcpkg_installed/vcpkg/pkgs/zlib_x64-windows/debug/lib
+includedir=D:/Griddy/Horpon/Loader/vcpkg_installed/vcpkg/pkgs/zlib_x64-windows/debug/include
+
+Name: zlib
+Description: zlib compression library
+Version: 1.3
+
+Requires:
+Libs: -L${libdir} -L${sharedlibdir} -lzlibd
+Cflags: -I${includedir}

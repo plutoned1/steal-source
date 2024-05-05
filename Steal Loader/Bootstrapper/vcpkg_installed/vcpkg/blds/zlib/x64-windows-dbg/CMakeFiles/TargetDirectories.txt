@@ -1,0 +1,7 @@
+D:/Griddy/Horpon/Loader/vcpkg_installed/vcpkg/blds/zlib/x64-windows-dbg/CMakeFiles/zlib.dir
+D:/Griddy/Horpon/Loader/vcpkg_installed/vcpkg/blds/zlib/x64-windows-dbg/CMakeFiles/test.dir
+D:/Griddy/Horpon/Loader/vcpkg_installed/vcpkg/blds/zlib/x64-windows-dbg/CMakeFiles/edit_cache.dir
+D:/Griddy/Horpon/Loader/vcpkg_installed/vcpkg/blds/zlib/x64-windows-dbg/CMakeFiles/rebuild_cache.dir
+D:/Griddy/Horpon/Loader/vcpkg_installed/vcpkg/blds/zlib/x64-windows-dbg/CMakeFiles/list_install_components.dir
+D:/Griddy/Horpon/Loader/vcpkg_installed/vcpkg/blds/zlib/x64-windows-dbg/CMakeFiles/install.dir
+D:/Griddy/Horpon/Loader/vcpkg_installed/vcpkg/blds/zlib/x64-windows-dbg/CMakeFiles/install/local.dir
