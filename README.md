@@ -1,5 +1,4 @@
 # all of steals sources (steal mod menu for Gorilla Tag)
-leaked by pluto and ian
 
 this pack includes:
 + steal.lol source
@@ -14,3 +13,6 @@ this pack includes:
 + random code
 + exports of steal buyer chat (deleted)
 + export of steal dev group chat
++ tons of other stuff im not listing all that
+
+leaked by pluto and ian
